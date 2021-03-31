@@ -49,3 +49,8 @@ void w_write(Address adr, word b)
     mem[adr] = b;
     mem[adr + 1] = b >> 8;
 }
+
+int main(int argc, char *argv[])
+{
+    test_mem();
+}
