@@ -54,7 +54,7 @@ void load_file()
 {
     Address adr;
     word N;
-    while(scanf("%x%x", &adr, &N) == 2)
+    while(scanf("%hx%hx", &adr, &N) == 2)
     {
         for(unsigned int i = 0; i < N; i++)
         {
