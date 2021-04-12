@@ -50,7 +50,23 @@ void w_write(Address adr, word b)
     mem[adr + 1] = b >> 8;
 }
 
+void load_file()
+{
+    Address adr;
+    word N;
+    while(scanf("%x%x", &adr, &N) == 2)
+    {
+        for(unsigned int i = 0; i < N; i++)
+        {
+            unsigned int t;
+            scanf("%x", &t);
+            b_write(adr + i, t);
+        }
+    }
+}
+
 int main(int argc, char *argv[])
 {
     test_mem();
 }
+
