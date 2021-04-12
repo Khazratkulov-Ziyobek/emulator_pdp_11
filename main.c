@@ -76,5 +76,9 @@ void mem_dump(Address adr, word n)
 int main(int argc, char *argv[])
 {
     test_mem();
+	FILE * fin  = fopen(argv[1], "r");
+    load_file();
+    fclose(fin);
+    return 0;
 }
 
