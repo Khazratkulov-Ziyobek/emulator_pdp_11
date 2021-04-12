@@ -65,6 +65,14 @@ void load_file()
     }
 }
 
+void mem_dump(Address adr, word n)
+{
+    for(unsigned int i = 0; i < n; i += 2)
+    {
+        printf("%06o : %06o\n", adr + i, w_read(adr + i)); 
+    }
+}
+
 int main(int argc, char *argv[])
 {
     test_mem();
