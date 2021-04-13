@@ -5,7 +5,6 @@
 #include "pdp_11.h"
 
 
-byte mem[MEMSIZE];
 
 void b_write(Address adr, byte b)
 {
