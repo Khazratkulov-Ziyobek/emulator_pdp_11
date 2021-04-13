@@ -9,7 +9,7 @@ typedef word Address;
 extern byte mem[];
 
 
-// -------- main_functions ------------
+
 void b_write(Address adr, byte b);
 byte b_read(Address adr);
 void w_write(Address adr, word w);
