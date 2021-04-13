@@ -3,8 +3,6 @@
 #include <stdarg.h>
 #include "pdp_11.h"
 
-byte mem[MEMSIZE];
-
 void test_mem() {
 	byte b0 = 0x0a;
 	b_write(2, b0);
@@ -27,51 +25,6 @@ void test_mem() {
 	assert(w == wres);
 }
 
-void b_write(Address adr, byte b)
-{
-    mem[adr] = b;
-}
-
-byte b_read(Address adr)
-{
-    return mem[adr];
-}
-
-word w_read(Address adr)
-{
-    word w = ((word)mem[adr + 1]) << 8;
-    w = w | mem[adr];
-    return w; 
-}
-
-void w_write(Address adr, word b)
-{
-    mem[adr] = b;
-    mem[adr + 1] = b >> 8;
-}
-
-void load_file()
-{
-    Address adr;
-    word N;
-    while(scanf("%hx%hx", &adr, &N) == 2)
-    {
-        for(unsigned int i = 0; i < N; i++)
-        {
-            unsigned int t;
-            scanf("%x", &t);
-            b_write(adr + i, t);
-        }
-    }
-}
-
-void mem_dump(Address adr, word n)
-{
-    for(unsigned int i = 0; i < n; i += 2)
-    {
-        printf("%06o : %06o\n", adr + i, w_read(adr + i)); 
-    }
-}
 
 int main(int argc, char *argv[])
 {
