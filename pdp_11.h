@@ -17,3 +17,10 @@ word w_read(Address adr);
 void load_file();
 void mem_dump(Address adr, word n);
 void trace(const char* format, ...);
+
+
+void do_halt();
+void do_mov();
+void do_add();
+void do_nothing();
+void run();
