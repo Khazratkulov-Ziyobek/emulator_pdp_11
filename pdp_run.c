@@ -2,3 +2,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+void run()
+{
+    pc = 01000;
+    
+}
