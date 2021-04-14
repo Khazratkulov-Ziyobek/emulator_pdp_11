@@ -51,3 +51,11 @@ void mem_dump(Address adr, word n)
         printf("%06o : %06o\n", adr + i, w_read(adr + i)); 
     }
 }
+
+void trace(const char *fmt, ...)
+{
+    va_list ap;
+    va_start(ap, fmt);
+    vprintf(fmt, ap);
+    va_end(ap);
+}
