@@ -40,3 +40,4 @@ void do_mov();
 void do_add();
 void do_nothing();
 void run();
+void print_reg();
