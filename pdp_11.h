@@ -10,6 +10,13 @@ extern byte mem[];
 extern word reg[];
 
 
+typedef struct {
+    word mask;
+    word opcode;
+    char *name;
+    
+} Command;
+
 void b_write(Address adr, byte b);
 byte b_read(Address adr);
 void w_write(Address adr, word w);
