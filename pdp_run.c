@@ -9,7 +9,7 @@ extern Argument ss, dd;
 Argument get_mr(word w)
 {
     Argument res;
-
+    int reg = w & 7;
 
     return res;
 }
