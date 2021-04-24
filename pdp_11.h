@@ -17,10 +17,10 @@ typedef struct {
     void (* do_func)(void);
 } Command;
 
-struct Argument {
-    word val;
-    word adr;
-} ss, dd;
+typedef struct {
+    word val;   //значение аргумента
+    word adr;   //адрес аргумента
+} Argument;
 
 
 void b_write(Address adr, byte b);
