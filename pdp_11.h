@@ -20,7 +20,7 @@ typedef struct {
 struct Argument {
     word val;
     word adr;
-};
+} ss, dd;
 
 
 void b_write(Address adr, byte b);
