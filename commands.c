@@ -4,7 +4,7 @@
 
 void print_reg()
 {
-    trace("R0:%o R1:%o R2:%o R3:%o\n R4:%o R5:%o R6:%o R7:%o\n", reg[0], reg[1], reg[2], reg[3], reg[4], reg[5], reg[6], reg[7]);
+    trace("R0:%o R1:%o R2:%o R3:%o\nR4:%o R5:%o R6:%o R7:%o\n", reg[0], reg[1], reg[2], reg[3], reg[4], reg[5], reg[6], reg[7]);
 }
 
 void do_halt(Argument ss, Argument dd)
