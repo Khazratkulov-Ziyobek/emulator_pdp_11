@@ -7,6 +7,10 @@ typedef word Address;
 #define pc reg[7]
 
 
+#define NO_PARAMS 0
+#define HAS_DD 1
+#define HAS_SS (1 << 1)
+
 typedef struct {
     word val;   //значение аргумента
     word adr;   //адрес аргумента
