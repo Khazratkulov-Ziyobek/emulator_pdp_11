@@ -6,9 +6,6 @@ typedef word Address;
 #define MEMSIZE (64*1024)
 #define pc reg[7]
 
-extern byte mem[];
-extern word reg[];
-
 
 typedef struct {
     word mask;
@@ -21,6 +18,12 @@ typedef struct {
     word val;   //значение аргумента
     word adr;   //адрес аргумента
 } Argument;
+
+
+extern byte mem[];
+extern word reg[];
+extern Command cmd[];
+extern Argument ss, dd;
 
 
 void b_write(Address adr, byte b);
