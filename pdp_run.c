@@ -10,6 +10,11 @@ void run()
         word w = w_read(pc);
         trace("%06o %06o: ", pc, w);
         pc += 2;
+        if(w == 0)
+        {
+            trace("halt ");
+            do_halt();
+        }
     }
     
 }
