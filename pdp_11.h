@@ -14,7 +14,7 @@ typedef struct {
     word mask;
     word opcode;
     char *name;
-    
+    void (* do_func)(void);
 } Command;
 
 void b_write(Address adr, byte b);
