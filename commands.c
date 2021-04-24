@@ -8,7 +8,9 @@ void do_halt()
     exit(0);
 }
 
-void do_mov() {}
+void do_mov() {
+    w_write(dd.adr, ss.val);
+}
 void do_add() {}
 void do_nothing() 
 {
