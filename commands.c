@@ -17,7 +17,9 @@ void do_halt()
 void do_mov() {
     w_write(dd.adr, ss.val);
 }
-void do_add() {}
+void do_add() {
+    reg[dd.adr] = reg[dd.adr] + reg[ss.adr];
+}
 void do_nothing() 
 {
     trace("UNKNOWN FUNCTION\n");
