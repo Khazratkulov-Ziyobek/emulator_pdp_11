@@ -3,8 +3,7 @@
 #include <stdlib.h>
 
 
-extern Command cmd[];
-extern Argument ss, dd;
+
 
 Argument get_mr(word w)
 {
