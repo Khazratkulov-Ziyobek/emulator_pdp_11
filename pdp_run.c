@@ -2,6 +2,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+
+extern Command cmd[];
+
+
 void run()
 {
     pc = 01000;
