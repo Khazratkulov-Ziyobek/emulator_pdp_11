@@ -4,6 +4,7 @@
 
 
 extern Command cmd[];
+extern Argument ss, dd;
 
 
 void run()
