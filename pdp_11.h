@@ -21,6 +21,7 @@ typedef struct {
     word opcode;
     char *name;
     void (* do_func)(Argument ss, Argument dd);
+    char params;
 } Command;
 
 
