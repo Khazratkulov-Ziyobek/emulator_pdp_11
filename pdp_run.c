@@ -50,24 +50,24 @@ void run()
     while(1)
     {
         word w = w_read(pc);
-        trace("%06o %06o: ", pc, w);
+        trace("%06o %06o: \n", pc, w);
         pc += 2;
         if(w == 0)
         {
-            trace("halt ");
-            do_halt();
+            trace("halt \n");
+            do_halt(ss, dd);
         }
         else if((w & 0170000) == 0010000)
         {
             trace("mov "); //01SSDD
             ss = get_mr(w);
             dd = get_mr(w);
-            do_mov();
+            do_mov(ss, dd);
         }
         else if((w & 0170000) == 0060000)
         {
             trace("add ");
-            do_add();
+            do_add(ss, dd);
         }
     }
     
