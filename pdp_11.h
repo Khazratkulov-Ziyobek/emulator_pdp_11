@@ -8,16 +8,16 @@ typedef word Address;
 
 
 typedef struct {
+    word val;   //значение аргумента
+    word adr;   //адрес аргумента
+} Argument;
+
+typedef struct {
     word mask;
     word opcode;
     char *name;
     void (* do_func)(Argument ss, Argument dd);
 } Command;
-
-typedef struct {
-    word val;   //значение аргумента
-    word adr;   //адрес аргумента
-} Argument;
 
 
 extern byte mem[];
