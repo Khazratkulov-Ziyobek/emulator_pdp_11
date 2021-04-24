@@ -18,6 +18,7 @@ Argument get_mr(word w)
             res.val  = reg[r];
             trace("R%o ", r);
             break;
+        
     }
     return res;
 }
