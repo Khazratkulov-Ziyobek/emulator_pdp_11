@@ -17,6 +17,12 @@ typedef struct {
     void (* do_func)(void);
 } Command;
 
+struct Argument {
+    word val;
+    word adr;
+};
+
+
 void b_write(Address adr, byte b);
 byte b_read(Address adr);
 void w_write(Address adr, word w);
