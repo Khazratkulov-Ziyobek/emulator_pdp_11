@@ -9,8 +9,8 @@ extern Argument ss, dd;
 Argument get_mr(word w)
 {
     Argument res;
-    int r = w & 7;
-    int mode = (w >> 3) & 7;
+    int r = w & 7; // номер регистра
+    int mode = (w >> 3) & 7; // номер мода
     return res;
 }
 
