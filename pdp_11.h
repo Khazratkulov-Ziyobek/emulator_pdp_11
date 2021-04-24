@@ -11,7 +11,7 @@ typedef struct {
     word mask;
     word opcode;
     char *name;
-    void (* do_func)(void);
+    void (* do_func)(Argument ss, Argument dd);
 } Command;
 
 typedef struct {
@@ -35,9 +35,9 @@ void mem_dump(Address adr, word n);
 void trace(const char* format, ...);
 
 
-void do_halt();
-void do_mov();
-void do_add();
-void do_nothing();
+void do_halt(Argument ss, Argument dd);
+void do_mov(Argument ss, Argument dd);
+void do_add(Argument ss, Argument dd);
+void do_nothing(Argument ss, Argument dd);
 void run();
 void print_reg();
