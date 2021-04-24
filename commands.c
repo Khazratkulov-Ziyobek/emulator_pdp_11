@@ -27,7 +27,7 @@ void do_nothing(Argument ss, Argument dd)
 }
 
 Command cmd[] = {
-    {0170000, 0010000, "mov", do_mov},
-    {0170000, 0060000, "add", do_add},
-
+    {0170000, 0010000, "mov", do_mov, HAS_SS + HAS_DD},
+    {0170000, 0060000, "add", do_add, HAS_SS + HAS_DD},
+    {0177777, 0000000, "halt", do_halt, NO_PARAMS},
 };
