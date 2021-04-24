@@ -6,7 +6,13 @@
 extern Command cmd[];
 extern Argument ss, dd;
 
-Argument get_mr(word w);
+Argument get_mr(word w)
+{
+    Argument res;
+
+
+    return res;
+}
 
 void run()
 {
@@ -24,6 +30,8 @@ void run()
         else if((w & 0170000) == 0010000)
         {
             trace("mov "); //01SSDD
+            ss = get_mr(w);
+            dd = get_mr(w);
             do_mov();
         }
     }
