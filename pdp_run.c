@@ -63,6 +63,11 @@ void run()
             dd = get_mr(w);
             do_mov();
         }
+        else if((w & 0170000) == 0060000)
+        {
+            trace("add ");
+            do_add();
+        }
     }
     
 }
