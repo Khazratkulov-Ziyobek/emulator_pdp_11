@@ -32,7 +32,7 @@ void test_mem() {
 
 int main(int argc, char *argv[])
 {
-    test_mem();
+    // test_mem();
 	FILE * fin  = fopen(argv[1], "r");
     load_file();
 	run();
