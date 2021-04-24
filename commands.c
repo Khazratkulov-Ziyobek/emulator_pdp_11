@@ -4,11 +4,15 @@
 
 void do_halt()
 {
-    trace("THE END!!!");
+    trace("THE END!!!\n");
     exit(0);
 }
 
 void do_mov() {}
 void do_add() {}
-void do_nothing() {}
+void do_nothing() 
+{
+    trace("UNKNOWN FUNCTION\n");
+    exit(0);
+}
 
