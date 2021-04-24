@@ -7,6 +7,6 @@ DEPS=pdp_11.h
 	$(CC) -c -o $@ $< $(CFLAGS)
 all: pdp
 pdp: main.o main_function.o commands.o pdp_run.o
-	$(CC) -o pdp main.o main_function.o commands.o run.o
+	$(CC) -o pdp main.o main_function.o commands.o pdp_run.o
 clean:
 	rm -rf *.o pdp
