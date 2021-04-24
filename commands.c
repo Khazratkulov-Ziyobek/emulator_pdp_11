@@ -16,7 +16,7 @@ void do_nothing()
     exit(0);
 }
 
-Command cmd [] = {
+Command cmd[] = {
     {0170000, 0010000, "mov", do_mov},
     {0170000, 0060000, "add", do_add},
 
