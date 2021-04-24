@@ -46,6 +46,7 @@ Argument get_mr(word w)
 void run()
 {
     pc = 01000;
+    Argument ss, dd;
     while(1)
     {
         word w = w_read(pc);
