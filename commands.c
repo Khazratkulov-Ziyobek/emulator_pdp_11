@@ -2,9 +2,15 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+void print_reg()
+{
+    trace("R0:%o R1:%o R2:%o R3:%o R4:%o R5:%o R6:%o R7:%o\n", reg[0], reg[1], reg[2], reg[3], reg[4], reg[5], reg[6], reg[7]);
+}
+
 void do_halt()
 {
     trace("THE END!!!\n");
+    print_reg();
     exit(0);
 }
 
