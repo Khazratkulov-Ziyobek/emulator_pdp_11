@@ -23,6 +23,19 @@ Argument get_mr(word w)
             res.val  = w_read(res.adr); //b_read тоже нудно написать
             trace("(R%o) ", r);
             break;
+        case 2:     // mode 2 (R3)+ #3
+            res.adr = reg[r];
+            res.val  = w_read(res.adr); //to do b_read
+            reg[r] += 2; //to do +1
+            if(r == 7)
+            {
+                trace("#%o ", res.val);
+            }
+            else
+            {
+                trace("(R%o)+ ", r);
+            }
+            break;
         
     }
     return res;
