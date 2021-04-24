@@ -15,6 +15,11 @@ void run()
             trace("halt ");
             do_halt();
         }
+        else if((w & 0170000) == 0010000)
+        {
+            trace("mov "); //01SSDD
+            do_mov();
+        }
     }
     
 }
