@@ -67,6 +67,8 @@ void run()
         else if((w & 0170000) == 0060000)
         {
             trace("add ");
+            ss = get_mr(w >> 6);
+            dd = get_mr(w);
             do_add(ss, dd);
         }
     }
