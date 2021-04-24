@@ -60,7 +60,7 @@ void run()
         else if((w & 0170000) == 0010000)
         {
             trace("mov "); //01SSDD
-            ss = get_mr(w);
+            ss = get_mr(w >> 6);
             dd = get_mr(w);
             do_mov(ss, dd);
         }
