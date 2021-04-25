@@ -8,5 +8,7 @@ DEPS=pdp_11.h
 all: pdp
 pdp: main.o main_function.o commands.o pdp_run.o
 	$(CC) -o pdp main.o main_function.o commands.o pdp_run.o
+valgrind:
+	valgrind ./pdp
 clean:
 	rm -rf *.o pdp
