@@ -35,8 +35,8 @@ int main(int argc, char *argv[])
     // test_mem();
 	FILE * fin  = fopen(argv[1], "r");
     load_file();
-	run();
     fclose(fin);
+	run();
     return 0;
 }
 
