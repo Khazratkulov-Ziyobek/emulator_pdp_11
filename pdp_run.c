@@ -45,6 +45,7 @@ Argument get_mr(word w)
 
 void run()
 {
+    trace("---------------- running --------------\n");
     pc = 01000;
     Argument ss, dd;
     while(1)
