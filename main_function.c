@@ -29,8 +29,9 @@ void w_write(Address adr, word b)
     mem[adr + 1] = b >> 8;
 }
 
-void load_file()
+void load_file(const char * filename)
 {
+    FILE *fin = fopen(filename, "r"); 
     Address adr;
     word N;
     while(scanf("%hx%hx", &adr, &N) == 2)
@@ -42,6 +43,7 @@ void load_file()
             b_write(adr + i, t);
         }
     }
+    fclose(fin);
 }
 
 void mem_dump(Address adr, word n)
