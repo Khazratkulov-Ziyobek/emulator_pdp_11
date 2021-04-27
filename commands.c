@@ -18,7 +18,7 @@ void do_mov(Argument ss, Argument dd) {
     w_write(dd.adr, ss.val);
 }
 void do_add(Argument ss, Argument dd) {
-    reg[dd.adr] = reg[dd.adr] + reg[ss.adr];
+    w_write(dd.adr, dd.val + ss.val);
 }
 void do_nothing(Argument ss, Argument dd) 
 {
