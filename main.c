@@ -33,10 +33,8 @@ void test_mem() {
 int main(int argc, char *argv[])
 {
     // test_mem();
-	FILE * fin  = fopen(argv[1], "r");
-    load_file();
-    fclose(fin);
+	load_file(argv[1]);
 	run();
-    return 0;
+	return 0;
 }
 
