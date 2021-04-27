@@ -35,7 +35,7 @@ void b_write(Address adr, byte b);
 byte b_read(Address adr);
 void w_write(Address adr, word w);
 word w_read(Address adr);
-void load_file();
+void load_file(const char * filename);
 void mem_dump(Address adr, word n);
 void trace(const char* format, ...);
 
