@@ -2,20 +2,10 @@ typedef unsigned char byte;
 typedef unsigned short int word;
 typedef word Address;
 
-
-#define MEMSIZE (64*1024)
-#define pc reg[7]
-
-
-#define NO_PARAMS 0
-#define HAS_DD 1
-#define HAS_SS (1 << 1)
-
 typedef struct {
     word val;   //значение аргумента
     word adr;   //адрес аргумента
 } Argument;
-
 typedef struct {
     word mask;
     word opcode;
@@ -25,10 +15,17 @@ typedef struct {
 } Command;
 
 
-extern byte mem[];
-extern word reg[];
-extern Command cmd[];
+#define MEMSIZE (64*1024)
+#define pc reg[7]
 
+
+#define NO_PARAMS 0
+#define HAS_DD 1
+#define HAS_SS (1 << 1)
+
+
+byte mem[MEMSIZE];
+word reg[8];
 
 
 void b_write(Address adr, byte b);
