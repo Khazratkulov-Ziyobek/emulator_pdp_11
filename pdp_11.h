@@ -46,3 +46,4 @@ void do_add(Argument ss, Argument dd);
 void do_nothing(Argument ss, Argument dd);
 void run();
 void print_reg();
+Argument get_mr(word w);
