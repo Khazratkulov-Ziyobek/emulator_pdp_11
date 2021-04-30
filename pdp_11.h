@@ -28,7 +28,7 @@ typedef struct {
 
 
 extern byte mem[];
-extern word mem[];
+extern word reg[];
 
 
 void b_write(Address adr, byte b);
