@@ -4,6 +4,10 @@
 #include "pdp_11.h"
 
 
+word reg[8];
+byte mem[MEMSIZE];
+
+
 void test_mem() {
 	byte b0 = 0x0a;
 	b_write(2, b0);
