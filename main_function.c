@@ -34,12 +34,12 @@ void load_file(const char * filename)
     FILE *fin = fopen(filename, "r"); 
     Address adr;
     word N;
-    while(scanf("%hx%hx", &adr, &N) == 2)
+    while(fscanf(fin,"%hx%hx", &adr, &N) == 2)
     {
         for(unsigned int i = 0; i < N; i++)
         {
             unsigned int t;
-            scanf("%x", &t);
+            fscanf(fin, "%x", &t);
             b_write(adr + i, t);
         }
     }
