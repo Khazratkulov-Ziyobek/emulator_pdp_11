@@ -1,0 +1,3 @@
+#!/bin/bash
+
+gcc -Wall pdp_run.c main.c commands.c main_function.c -o a.out
