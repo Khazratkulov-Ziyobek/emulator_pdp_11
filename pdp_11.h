@@ -29,7 +29,7 @@ typedef struct {
 
 extern byte mem[];
 extern word reg[];
-
+extern Command cmd[];
 
 void b_write(Address adr, byte b);
 byte b_read(Address adr);
