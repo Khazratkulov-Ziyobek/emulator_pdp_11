@@ -4,7 +4,7 @@
 
 void print_reg()
 {
-    trace("R0:%06o R1:%06o R2:%06o R3:%06o\nR4:%06o R5:%06o R6:%06o R7:%06o\n", reg[0], reg[1], reg[2], reg[3], reg[4], reg[5], reg[6], reg[7]);
+    trace("\nR0:%06o R1:%06o R2:%06o R3:%06o\nR4:%06o R5:%06o R6:%06o R7:%06o\n", reg[0], reg[1], reg[2], reg[3], reg[4], reg[5], reg[6], reg[7]);
 }
 
 void do_halt(Argument ss, Argument dd)
@@ -22,12 +22,13 @@ void do_add(Argument ss, Argument dd) {
 }
 void do_nothing(Argument ss, Argument dd) 
 {
-    trace("UNKNOWN FUNCTION\n");
-    exit(0);
+    // trace("UNKNOWN FUNCTION\n");
+    // exit(0);
 }
 
 Command cmd[] = {
     {0170000, 0010000, "mov", do_mov, HAS_SS + HAS_DD},
     {0170000, 0060000, "add", do_add, HAS_SS + HAS_DD},
     {0177777, 0000000, "halt", do_halt, NO_PARAMS},
+    {0, 0, "unknown", do_nothing, NO_PARAMS},
 };
