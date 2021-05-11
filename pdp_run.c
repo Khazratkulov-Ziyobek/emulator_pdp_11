@@ -36,7 +36,7 @@ Argument get_mr(word w)
             {
                 res.val  = w_read(res.adr);
                 reg[r] += 2;
-                trace("#%o ", res.val);
+                trace("#%06o ", res.val);
             }
             else if(wb == 0 || r == 6)
             {
@@ -58,7 +58,7 @@ Argument get_mr(word w)
             reg[r] += 2;
             if(r == 7) 
             {
-                trace("@#%o ", res.adr);
+                trace("@#%06o ", res.adr);
             }
             else 
             {
@@ -87,7 +87,7 @@ Argument get_mr(word w)
             res.val = w_read(res.adr);
             if(r == 7)
             {
-                trace("@-#%o ", res.adr);
+                trace("@-#%06o ", res.adr);
             }
             else
             {
