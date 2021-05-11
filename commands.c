@@ -20,11 +20,7 @@ void do_mov(Argument ss, Argument dd) {
 void do_add(Argument ss, Argument dd) {
     w_write(dd.adr, dd.val + ss.val);
 }
-void do_nothing(Argument ss, Argument dd) 
-{
-    // trace("UNKNOWN FUNCTION\n");
-    // exit(0);
-}
+void do_nothing(Argument ss, Argument dd) {}
 
 Command cmd[] = {
     {0170000, 0010000, "mov", do_mov, HAS_SS + HAS_DD},
