@@ -10,6 +10,7 @@ Argument get_mr(word w)
     Argument res;
     int r = w & 7; // номер регистра
     int mode = (w >> 3) & 7; // номер мода
+    int x;
     switch(mode)
     {
         case 0:     // mode 0 R3
@@ -91,6 +92,20 @@ Argument get_mr(word w)
             else
             {
                 trace("@-(R%o) ", r);
+            }
+            break;
+        case 6:
+            x = w_read(pc);
+            pc += 2;
+            res.adr = x + reg[r];
+            res.val = w_read(res.adr);
+            if(r == 7)
+            {
+                trace("%o ", res.adr);
+            }
+            else
+            {
+                trace("%o(R%o) ", x, r);
             }
             break;
         default:
