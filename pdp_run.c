@@ -64,6 +64,21 @@ Argument get_mr(word w)
                 trace("@(R%o)+ ", r);
             }
             break;
+        case 4:
+            if(wb == 0 || r == 6 || r == 7)
+            {
+                reg[r] -= 2;
+                res.adr = reg[r];
+                res.val = w_read(res.adr);
+            }
+            else
+            {
+                reg[r] -= 1;
+                res.adr = reg[r];
+                res.val = b_read(res.adr);
+            }
+            trace("-(R%o) ", r);
+            break;
         default:
             fprintf(stderr, "Mode %o NOT IMPLEMENTED YET!\n", mode);
             exit(1);
