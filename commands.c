@@ -4,7 +4,7 @@
 
 void print_reg()
 {
-    trace("\nR0:%06o R1:%06o R2:%06o R3:%06o\nR4:%06o R5:%06o R6:%06o R7:%06o\n", reg[0], reg[1], reg[2], reg[3], reg[4], reg[5], reg[6], reg[7]);
+    trace("\nR0:%06o R2:%06o R4:%06o sp:%06o\nR1:%06o R3:%06o R5:%06o pc:%06o\n", reg[0], reg[2], reg[4], reg[6], reg[1], reg[3], reg[5], reg[7]);
 }
 
 void do_halt(Argument ss, Argument dd)
@@ -16,11 +16,11 @@ void do_halt(Argument ss, Argument dd)
 
 void do_mov(Argument ss, Argument dd) {
     w_write(dd.adr, ss.val);
-    trace("    [%06o] = %06o\n", pc - 2, ss.val);
     if(dd.adr < 8)
     {
         reg[dd.adr] = ss.val;
     }
+    trace("\n");
 }
 void do_add(Argument ss, Argument dd) {
     word w = dd.val + ss.val;
