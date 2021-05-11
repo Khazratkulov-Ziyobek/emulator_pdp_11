@@ -79,6 +79,20 @@ Argument get_mr(word w)
             }
             trace("-(R%o) ", r);
             break;
+        case 5:
+            reg[r] -= 2;
+            res.adr = reg[r];
+            res.adr = w_read(res.adr);
+            res.val = w_read(res.adr);
+            if(r == 7)
+            {
+                trace("@-#%o ", res.adr);
+            }
+            else
+            {
+                trace("@-(R%o) ", r);
+            }
+            break;
         default:
             fprintf(stderr, "Mode %o NOT IMPLEMENTED YET!\n", mode);
             exit(1);
