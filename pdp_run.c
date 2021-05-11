@@ -32,17 +32,17 @@ Argument get_mr(word w)
             break;
         case 2:     // mode 2 (R3)+ #3
             res.adr = reg[r];
-            if (wb == 0 || r == 6)
-            {
-                res.val  = w_read(res.adr);
-                reg[r] += 2;
-                trace("(R%o)+ ", r);
-            }
-            else if(r == 7)
+            if (r == 7)
             {
                 res.val  = w_read(res.adr);
                 reg[r] += 2;
                 trace("#%o ", res.val);
+            }
+            else if(wb == 0 || r == 6)
+            {
+                res.val  = w_read(res.adr);
+                reg[r] += 2;
+                trace("(R%o)+ ", r);
             }
             else
             {
@@ -135,24 +135,20 @@ void run()
     while(1)
     {
         word w = w_read(pc);
-        trace("%06o %06o: ", pc, w);
+        trace("%06o: ", pc);
         pc += 2;
         int i = 0;
         while(1)
         {
             if((w & cmd[i].mask) == cmd[i].opcode)
             {
-                trace("%s \n", cmd[i].name);
-                if(cmd[i].params == HAS_SS)
+                trace("%s ", cmd[i].name);
+                if(cmd[i].params == HAS_SS + HAS_DD)
                 {
                     ss = get_mr(w >> 6);
-                }
-                if(cmd[i].params == HAS_DD)
-                {
                     dd = get_mr(w);
                 }
                 cmd[i].do_func(ss, dd);
-                // trace("\n");
                 break;
             }
             i++;
