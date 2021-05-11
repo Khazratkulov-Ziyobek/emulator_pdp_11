@@ -123,10 +123,6 @@ Argument get_mr(word w)
                 trace("@%o(R%o) ", x, r);
             }
             break;
-        default:
-            fprintf(stderr, "Mode %o NOT IMPLEMENTED YET!\n", mode);
-            exit(1);
-        
     }
     return res;
 }
