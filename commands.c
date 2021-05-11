@@ -9,16 +9,27 @@ void print_reg()
 
 void do_halt(Argument ss, Argument dd)
 {
-    trace("---------------- halted ---------------\n");
+    trace("\n---------------- halted ---------------\n");
     print_reg();
     exit(0);
 }
 
 void do_mov(Argument ss, Argument dd) {
     w_write(dd.adr, ss.val);
+    trace("    [%06o] = %06o\n", pc - 2, ss.val);
+    if(dd.adr < 8)
+    {
+        reg[dd.adr] = ss.val;
+    }
 }
 void do_add(Argument ss, Argument dd) {
-    w_write(dd.adr, dd.val + ss.val);
+    word w = dd.val + ss.val;
+    w_write(dd.adr, w);
+    if(dd.adr < 8)
+    {
+        reg[dd.adr] = w;
+    }
+    trace("\n");
 }
 void do_nothing(Argument ss, Argument dd) { }
 
