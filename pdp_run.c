@@ -108,6 +108,21 @@ Argument get_mr(word w)
                 trace("%o(R%o) ", x, r);
             }
             break;
+        case 7:
+            x = w_read(pc);
+            pc += 2;
+            res.adr = x + reg[r];
+            res.adr = w_read(res.adr);
+            res.val = w_read(res.adr);
+            if(r == 7)
+            {
+                trace("@%o ", res.adr);
+            }
+            else
+            {
+                trace("@%o(R%o) ", x, r);
+            }
+            break;
         default:
             fprintf(stderr, "Mode %o NOT IMPLEMENTED YET!\n", mode);
             exit(1);
