@@ -1,7 +1,7 @@
 #include "pdp_11.h"
 #include <stdio.h>
 #include <stdlib.h>
-
+#include <string.h>
 
 
 
@@ -65,7 +65,7 @@ Argument get_mr(word w)
                 trace("@(R%o)+ ", r);
             }
             break;
-        case 4:
+        case 4:         //mode 4 -(R3)
             if(wb == 0 || r == 6 || r == 7)
             {
                 reg[r] -= 2;
@@ -80,7 +80,7 @@ Argument get_mr(word w)
             }
             trace("-(R%o) ", r);
             break;
-        case 5:
+        case 5:         // mode 5 @-(R3)
             reg[r] -= 2;
             res.adr = reg[r];
             res.adr = w_read(res.adr);
@@ -94,7 +94,7 @@ Argument get_mr(word w)
                 trace("@-(R%o) ", r);
             }
             break;
-        case 6:
+        case 6:         // mode 6 X(R3)
             x = w_read(pc);
             pc += 2;
             res.adr = x + reg[r];
@@ -108,7 +108,7 @@ Argument get_mr(word w)
                 trace("%o(R%o) ", x, r);
             }
             break;
-        case 7:
+        case 7:         // mode 7 @X(R3)
             x = w_read(pc);
             pc += 2;
             res.adr = x + reg[r];
@@ -123,7 +123,7 @@ Argument get_mr(word w)
                 trace("@%o(R%o) ", x, r);
             }
             break;
-    }
+        }
     return res;
 }
 
@@ -143,7 +143,6 @@ void run()
             if((w & cmd[i].mask) == cmd[i].opcode)
             {
                 trace("%s \n", cmd[i].name);
-                cmd[i].do_func(ss, dd);
                 if(cmd[i].params == HAS_SS)
                 {
                     ss = get_mr(w >> 6);
@@ -152,6 +151,7 @@ void run()
                 {
                     dd = get_mr(w);
                 }
+                cmd[i].do_func(ss, dd);
                 // trace("\n");
                 break;
             }
