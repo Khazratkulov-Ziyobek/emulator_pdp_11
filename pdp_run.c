@@ -132,10 +132,11 @@ void run()
     trace("---------------- running --------------\n");
     pc = 01000;
     Argument ss, dd;
+    unsigned int nn, r;
     while(1)
     {
         word w = w_read(pc);
-        trace("%06o: ", pc);
+        trace("%06o %06o:", pc, w);
         pc += 2;
         int i = 0;
         while(1)
@@ -143,12 +144,24 @@ void run()
             if((w & cmd[i].mask) == cmd[i].opcode)
             {
                 trace("%s ", cmd[i].name);
-                if(cmd[i].params == HAS_SS + HAS_DD)
+                if(cmd[i].params & HAS_SS)
                 {
                     ss = get_mr(w >> 6);
+                }
+                if(cmd[i].params & HAS_DD)
+                {
                     dd = get_mr(w);
                 }
-                cmd[i].do_func(ss, dd);
+                if(cmd[i].params & HAS_R)
+                {
+                    r = (w >> 6) & 7;
+                    trace("R%o ", r);
+                }
+                if(cmd[i].params & HAS_NN)
+                {
+                    nn = w & 077;
+                }
+                cmd[i].do_func(ss, dd, nn, r);
                 break;
             }
             i++;
