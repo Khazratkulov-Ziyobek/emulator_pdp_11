@@ -20,7 +20,7 @@ Argument get_mr(word w)
             break;
         case 1:     // mode 1 (R3)
             res.adr = reg[r];
-            if( wb == 0 || r == 7 || r == 6)
+            if( word_or_byte == 0 || r == 7 || r == 6)
             {
                 res.val  = w_read(res.adr);
             }
@@ -32,17 +32,17 @@ Argument get_mr(word w)
             break;
         case 2:     // mode 2 (R3)+ #3
             res.adr = reg[r];
-            if (r == 7)
+            if (word_or_byte == 0 || r == 6 || r == 7)
             {
                 res.val  = w_read(res.adr);
                 reg[r] += 2;
-                trace("#%06o ", res.val);
-            }
-            else if(wb == 0 || r == 6)
-            {
-                res.val  = w_read(res.adr);
-                reg[r] += 2;
-                trace("(R%o)+ ", r);
+                if(r == 7)
+                {
+                    trace("#%06o ", res.val);
+                }
+                else {
+                     trace("(R%o)+ ", r);
+                }
             }
             else
             {
@@ -66,7 +66,7 @@ Argument get_mr(word w)
             }
             break;
         case 4:         //mode 4 -(R3)
-            if(wb == 0 || r == 6 || r == 7)
+            if(word_or_byte == 0 || r == 6 || r == 7)
             {
                 reg[r] -= 2;
                 res.adr = reg[r];
@@ -139,6 +139,7 @@ void run()
         trace("%06o %06o:", pc, w);
         pc += 2;
         int i = 0;
+        word_or_byte = (w >> 15);
         while(1)
         {
             if((w & cmd[i].mask) == cmd[i].opcode)
@@ -155,7 +156,7 @@ void run()
                 if(cmd[i].params & HAS_R)
                 {
                     r = (w >> 6) & 7;
-                    trace("R%o ", r);
+                    trace("R%o, %06o ", r, pc - 6);
                 }
                 if(cmd[i].params & HAS_NN)
                 {
