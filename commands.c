@@ -66,11 +66,11 @@ void do_clr(Argument ss, Argument dd, unsigned int nn, unsigned int r)
 }
 
 Command cmd[] = {
-    {0170000, 0010000, "mov", do_mov, HAS_SS + HAS_DD},
-    {0170000, 0060000, "add", do_add, HAS_SS + HAS_DD},
+    {0170000, 0010000, "mov", do_mov, HAS_SS | HAS_DD},
+    {0170000, 0060000, "add", do_add, HAS_SS | HAS_DD},
     {0177777, 0000000, "halt", do_halt, NO_PARAMS},
-    {0177000, 0077000, "sob", do_sob, HAS_R + HAS_NN},
+    {0177000, 0077000, "sob", do_sob, HAS_R | HAS_NN},
     {0177700, 0005000, "clr", do_clr, HAS_DD},
-    {0170000, 0110000, "movb", do_movb, HAS_SS + HAS_DD},
+    {0170000, 0110000, "movb", do_movb, HAS_SS | HAS_DD},
     {0, 0, "unknown", do_nothing, NO_PARAMS},
 };
