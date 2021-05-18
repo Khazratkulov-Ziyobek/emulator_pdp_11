@@ -5,8 +5,8 @@
 #define NO_PARAMS 0
 #define HAS_DD 1
 #define HAS_SS 2
-#define HAS_R 4
-#define HAS_NN 8
+#define HAS_NN 4
+#define HAS_R 8
 
 
 typedef unsigned char byte;
@@ -32,7 +32,7 @@ typedef struct {
 extern byte mem[];
 extern word reg[];
 extern Command cmd[];
-extern int wb;
+extern int word_or_byte;
 
 void b_write(Address adr, byte b);
 byte b_read(Address adr);
