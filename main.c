@@ -6,7 +6,7 @@
 
 word reg[8];
 byte mem[MEMSIZE];
-int wb;
+int word_or_byte;
 
 
 void test_mem() {
