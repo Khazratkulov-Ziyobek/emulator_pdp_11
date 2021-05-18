@@ -32,15 +32,15 @@ void w_write(Address adr, word b)
 void load_file(const char * filename)
 {
     FILE *fin = fopen(filename, "r"); 
-    Address adr;
-    word N;
-    while(fscanf(fin,"%hx%hx", &adr, &N) == 2)
+    unsigned short int adr_start;
+    unsigned short int quantity;
+    while(fscanf(fin,"%hx%hx", &adr_start, &quantity) == 2)
     {
-        for(unsigned int i = 0; i < N; i++)
+        for(unsigned int i = 0; i < quantity; i++)
         {
             unsigned int t;
             fscanf(fin, "%x", &t);
-            b_write(adr + i, t);
+            b_write(adr_start + i, t);
         }
     }
     fclose(fin);
