@@ -20,6 +20,7 @@ void do_mov(Argument ss, Argument dd, unsigned int nn, unsigned int r) {
     {
         reg[dd.adr] = ss.val;
     }
+    trace("       [%06o]=%06o", ss.adr, ss.val);
     trace("\n");
 }
 
@@ -29,6 +30,7 @@ void do_movb(Argument ss, Argument dd, unsigned int nn, unsigned r) {
     {
         reg[dd.adr] = ss.val;
     }
+    trace("       [%06o]=%06o", ss.adr, ss.val);
     trace("\n");
 }
 
@@ -39,6 +41,7 @@ void do_add(Argument ss, Argument dd, unsigned int nn, unsigned int r) {
     {
         reg[dd.adr] = w;
     }
+    trace("            R%o=%06o  R%o=%06o", ss.adr, reg[ss.adr], dd.adr, reg[dd.adr]);
     trace("\n");
 }
 void do_nothing(Argument ss, Argument dd, unsigned int nn, unsigned int r) {
