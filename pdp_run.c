@@ -41,7 +41,7 @@ Argument get_mr(word w)
                     trace("#%06o ", res.val);
                 }
                 else {
-                     trace("(R%o)+ ", r);
+                    trace("(R%o)+ ", r);
                 }
             }
             else
@@ -71,14 +71,22 @@ Argument get_mr(word w)
                 reg[r] -= 2;
                 res.adr = reg[r];
                 res.val = w_read(res.adr);
+                if(r == 7)
+                {
+                    trace("-(pc)");
+                }
+                else
+                {
+                    trace("-(R%o) ", r);
+                }
             }
             else
             {
                 reg[r] -= 1;
                 res.adr = reg[r];
                 res.val = b_read(res.adr);
+                trace("-(R%o) ", r);
             }
-            trace("-(R%o) ", r);
             break;
         case 5:         // mode 5 @-(R3)
             reg[r] -= 2;
@@ -136,7 +144,7 @@ void run()
     while(1)
     {
         word w = w_read(pc);
-        trace("%06o %06o:", pc, w);
+        trace("%06o: ", pc);
         pc += 2;
         int i = 0;
         word_or_byte = (w >> 15);
@@ -144,7 +152,7 @@ void run()
         {
             if((w & cmd[i].mask) == cmd[i].opcode)
             {
-                trace("%s ", cmd[i].name);
+                trace("%s     ", cmd[i].name);
                 if(cmd[i].params & HAS_SS)
                 {
                     ss = get_mr(w >> 6);
