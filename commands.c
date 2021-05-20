@@ -32,8 +32,6 @@ void do_halt(Argument ss, Argument dd, unsigned int nn, unsigned int r, unsigned
 void do_mov(Argument ss, Argument dd, unsigned int nn, unsigned int r, unsigned int xx) {
     if(wb == 0)
         w_write(dd.adr, ss.val); 
-    else
-        b_write(dd.adr, ss.val); 
     if(dd.adr < 8) {
         reg[dd.adr] = ss.val;
     }
@@ -46,7 +44,7 @@ void do_movb(Argument ss, Argument dd, unsigned int nn, unsigned r, unsigned int
     b_write(dd.adr, ss.val);
     set_NZ(ss.val);
     if(dd.adr < 8) {
-		if (N == 0)
+        if (N == 0)
             ss.val = ss.val & 0377;
         else
             ss.val = (ss.val & 0377) | 0177400;
