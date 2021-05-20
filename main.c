@@ -1,12 +1,13 @@
 #include <stdio.h>
 #include <assert.h>
 #include <stdarg.h>
+#include <string.h>
 #include "pdp_11.h"
 
 
 word reg[8];
 byte mem[MEMSIZE];
-int word_or_byte;
+int wb;
 
 
 void test_mem() {
@@ -35,8 +36,14 @@ void test_mem() {
 int main(int argc, char *argv[])
 {
     // test_mem();
-	load_file(argv[1]);
-	run();
+	if(argc < 2) 
+		usage_print();
+	else {
+		check_trace(argc, argv);
+		check_bigtrace(argc, argv);
+		load_file(argc, argv);
+		run();
+	}
 	return 0;
 }
 
