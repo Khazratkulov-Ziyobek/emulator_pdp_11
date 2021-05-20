@@ -97,7 +97,7 @@ void run() {
     printf("---------------- running --------------\n");
     pc = 01000;
     Argument ss, dd;
-    unsigned int nn, r;
+    unsigned int nn, r, xx;
     while(1) {
         word w = w_read(pc);
         trace("%06o: ", pc);
@@ -120,7 +120,14 @@ void run() {
                 if(cmd[i].params & HAS_NN) {
                     nn = w & 077;
                 }
-                cmd[i].do_func(ss, dd, nn, r);
+                if(cmd[i].params & HAS_XX) {
+                    if((w & 0377) >> 7 == 1)
+                        xx = (w & 0377) - 0400;
+                    else 
+                        xx = w & 0377;
+                    
+                }
+                cmd[i].do_func(ss, dd, nn, r, xx);
                 if(check == 2)
                     print_reg();
                 break;
