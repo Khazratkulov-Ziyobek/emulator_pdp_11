@@ -32,16 +32,19 @@ typedef struct {
 extern byte mem[];
 extern word reg[];
 extern Command cmd[];
-extern int word_or_byte;
+extern int wb;
+extern int check;
 
 void b_write(Address adr, byte b);
 byte b_read(Address adr);
 void w_write(Address adr, word w);
 word w_read(Address adr);
-void load_file(const char * filename);
+void load_file(int argc, char  * argv[]);
 void mem_dump(Address adr, word n);
 void trace(const char* format, ...);
-
+void check_trace(int argc, char  * argv[]);
+void usage_print();
+void check_bigtrace(int argc, char  * argv[]);
 
 void do_halt(Argument ss, Argument dd, unsigned int nn, unsigned int r);
 void do_mov(Argument ss, Argument dd, unsigned int nn, unsigned int r);
