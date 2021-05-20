@@ -17,8 +17,7 @@ void do_halt(Argument ss, Argument dd, unsigned int nn, unsigned int r) {
 void do_mov(Argument ss, Argument dd, unsigned int nn, unsigned int r) {
 	// dd.adr = 3;
     w_write(dd.adr, ss.val); // ломает адрес 8 ????
-    if(dd.adr < 8)
-    {
+    if(dd.adr < 8) {
         reg[dd.adr] = ss.val;
     }
     trace("       [%06o]=%06o", ss.adr, ss.val);
@@ -27,8 +26,7 @@ void do_mov(Argument ss, Argument dd, unsigned int nn, unsigned int r) {
 
 void do_movb(Argument ss, Argument dd, unsigned int nn, unsigned r) {
     b_write(dd.adr, ss.val);
-    if(dd.adr < 8)
-    {
+    if(dd.adr < 8) {
         word w = ss.val << 8;
         w = (w >> 15);
 		if (w == 0)
@@ -44,8 +42,7 @@ void do_movb(Argument ss, Argument dd, unsigned int nn, unsigned r) {
 void do_add(Argument ss, Argument dd, unsigned int nn, unsigned int r) {
     word w = dd.val + ss.val;
     w_write(dd.adr, w);
-    if(dd.adr < 8)
-    {
+    if(dd.adr < 8) {
         reg[dd.adr] = w;
     }
     trace("            R%o=%06o  R%o=%06o", ss.adr, reg[ss.adr], dd.adr, reg[dd.adr]);
@@ -53,13 +50,11 @@ void do_add(Argument ss, Argument dd, unsigned int nn, unsigned int r) {
 }
 void do_nothing(Argument ss, Argument dd, unsigned int nn, unsigned int r) {
     trace("\n");
- }
+}
 
-void do_sob(Argument ss, Argument dd, unsigned int nn, unsigned int r)
-{
+void do_sob(Argument ss, Argument dd, unsigned int nn, unsigned int r) {
     reg[r] -= 1;
-    if(reg[r] != 0)
-    {
+    if(reg[r] != 0) {
         pc -= 2*nn;
     }
     trace("\n");
@@ -67,8 +62,7 @@ void do_sob(Argument ss, Argument dd, unsigned int nn, unsigned int r)
 
 void do_clr(Argument ss, Argument dd, unsigned int nn, unsigned int r) {
     w_write(dd.adr, 0);
-    if(dd.adr < 8)
-    {
+    if(dd.adr < 8) {
         reg[dd.adr] = 0;
     }
     trace("\n");
